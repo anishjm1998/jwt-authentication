@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module, OnModuleInit, Logger } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
@@ -11,7 +11,9 @@ import { UsersModule } from './users/users.module';
   ],
 })
 export class AppModule implements OnModuleInit {
+  private readonly logger = new Logger(AppModule.name);
+
   onModuleInit() {
-    console.log('✅ Connected to MongoDB successfully!');
+    this.logger.log('Connected to MongoDB successfully!');
   }
 }
